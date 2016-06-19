@@ -1,0 +1,5 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xrdpb="http://e-rik.github.io/schemas/xroad-protobuf.xsd"
+           targetNamespace="http://e-rik.github.io/schemas/xroad-protobuf.xsd">
+  <xs:attribute name="schema" xs:type="xs:anyURI" />
+</xs:schema>
