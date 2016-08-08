@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="AnnaIsikuKvalifikatsioonid"
+           targetNamespace="http://producers.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid"
+           xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+           xmlns:tns="http://producers.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid"
+           xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="unqualified">
+  <xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+  <xs:complexType name="AnnaIsikuKvalifikatsioonidParing">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="AsjaNR" type="xs:string"/>
+        <xs:element name="Viitenumber" type="xs:string"/>
+      </xs:choice>
+      <xs:choice>
+        <xs:element name="Isikukood" type="xs:string"/>
+        <xs:sequence>
+          <xs:element name="IsikuEesnimi" type="xs:string"/>
+          <xs:element name="IsikuNimi" type="xs:string"/>
+          <xs:element name="IsikuSynniKP" type="xs:date"/>
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SeaduseSate">
+    <xs:sequence>
+      <xs:element name="Paragrahv" type="xs:string" nillable="true"/>
+      <xs:element name="ParagrahvPrimm" type="xs:string" nillable="true"/>
+      <xs:element name="Punkt" type="xs:string" nillable="true"/>
+      <xs:element name="PunktPrimm" type="xs:string" nillable="true"/>
+      <xs:element name="Tekst" type="xs:string" nillable="true"/>
+      <xs:element name="SeadustikKL" type="xs:long"/>
+      <xs:element name="LiikKL" type="xs:long" nillable="true"/>
+      <xs:element name="Loige" type="xs:string" nillable="true"/>
+      <xs:element name="LoigePrimm" type="xs:string" nillable="true"/>
+      <xs:element name="TekstLyhendatult" type="xs:string" nillable="true"/>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="AlgusKP" type="xs:dateTime"/>
+      <xs:element name="LoppKP" type="xs:dateTime" nillable="true"/>
+      <xs:element name="PeatykkNR" type="xs:string" nillable="true"/>
+      <xs:element name="PeatykiNimetusKL" type="xs:long" nillable="true"/>
+      <xs:element name="JaguNR" type="xs:string" nillable="true"/>
+      <xs:element name="JaoNimetusKL" type="xs:long" nillable="true"/>
+      <xs:element name="JaotisNR" type="xs:string" nillable="true"/>
+      <xs:element name="JaotiseNimetusKL" type="xs:long" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FyysilineIsik">
+    <xs:sequence>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="Kood" type="xs:string" nillable="true"/>
+      <xs:element name="Nimi" type="xs:string"/>
+      <xs:element name="MuudeRiikideKoodid" type="xs:string" nillable="true"/>
+      <xs:element name="Eesnimi" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KvalifikatsiooniParagrahv">
+    <xs:sequence>
+      <xs:element name="Paragrahv" type="xs:string" nillable="true"/>
+      <xs:element name="ParagrahvPrimm" type="xs:string" nillable="true"/>
+      <xs:element name="Punkt" type="xs:string" nillable="true"/>
+      <xs:element name="PunktPrimm" type="xs:string" nillable="true"/>
+      <xs:element name="Tekst" type="xs:string" nillable="true"/>
+      <xs:element name="SeadustikKL" type="xs:long"/>
+      <xs:element name="LiikKL" type="xs:long" nillable="true"/>
+      <xs:element name="Loige" type="xs:string" nillable="true"/>
+      <xs:element name="LoigePrimm" type="xs:string" nillable="true"/>
+      <xs:element name="TekstLyhendatult" type="xs:string" nillable="true"/>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="AlgusKP" type="xs:dateTime"/>
+      <xs:element name="LoppKP" type="xs:dateTime" nillable="true"/>
+      <xs:element name="PeatykkNR" type="xs:string" nillable="true"/>
+      <xs:element name="PeatykiNimetusKL" type="xs:long" nillable="true"/>
+      <xs:element name="JaguNR" type="xs:string" nillable="true"/>
+      <xs:element name="JaoNimetusKL" type="xs:long" nillable="true"/>
+      <xs:element name="JaotisNR" type="xs:string" nillable="true"/>
+      <xs:element name="JaotiseNimetusKL" type="xs:long" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SyydistusPunkt">
+    <xs:sequence>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="LahendKL" type="xs:long"/>
+      <xs:element name="LahendiKP" type="xs:dateTime"/>
+      <xs:element name="AlgusKP" type="xs:dateTime" nillable="true"/>
+      <xs:element name="LoppKP" type="xs:dateTime" nillable="true"/>
+      <xs:element name="KvalifikatsiooniParagrahvid">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:restriction base="soapenc:Array">
+              <xs:sequence>
+                <xs:element name="item" type="tns:KvalifikatsiooniParagrahv" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:KvalifikatsiooniParagrahv[]"/>
+            </xs:restriction>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SulgemiseKP" type="xs:dateTime" nillable="true"/>
+      <xs:element name="SyydistusPunktCSV" type="xs:string" nillable="true"/>
+      <xs:element name="KlientsysteemiID" type="xs:string" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Sanktsioon">
+    <xs:sequence>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="TyypKL" type="xs:long"/>
+      <xs:element name="LiikKL" type="xs:long" nillable="true"/>
+      <xs:element name="AlaLiikKL" type="xs:long" nillable="true"/>
+      <xs:element name="AluseksOlevadSyydistusPunktid">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:restriction base="soapenc:Array">
+              <xs:sequence>
+                <xs:element name="item" type="tns:SyydistusPunkt" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SyydistusPunkt[]"/>
+            </xs:restriction>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ToiminguOsaline">
+    <xs:sequence>
+      <xs:element name="Isik" type="tns:FyysilineIsik"/>
+      <xs:element name="Sanktsioonid" nillable="true" minOccurs="0">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:restriction base="soapenc:Array">
+              <xs:sequence>
+                <xs:element name="item" type="tns:Sanktsioon" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:Sanktsioon[]"/>
+            </xs:restriction>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Toiming">
+    <xs:sequence>
+      <xs:element name="AlaLiikKL" type="xs:long" nillable="true"/>
+      <xs:element name="Alus" nillable="true">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:restriction base="soapenc:Array">
+              <xs:sequence>
+                <xs:element name="item" type="tns:SeaduseSate" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SeaduseSate[]"/>
+            </xs:restriction>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LiikKL" type="xs:long"/>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="Toiminguosalised">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:restriction base="soapenc:Array">
+              <xs:sequence>
+                <xs:element name="item" type="tns:ToiminguOsaline" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:ToiminguOsaline[]"/>
+            </xs:restriction>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Menetlus">
+    <xs:sequence>
+      <xs:element name="ObjektID" type="xs:long"/>
+      <xs:element name="MenetluseNR" type="xs:string"/>
+      <xs:element name="Toimingud">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:restriction base="soapenc:Array">
+              <xs:sequence>
+                <xs:element name="item" type="tns:Toiming" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:Toiming[]"/>
+            </xs:restriction>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AnnaIsikuKvalifikatsioonidVastus">
+    <xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="ObjektID" type="xs:long"/>
+          <xs:element name="LiikKL" type="xs:long"/>
+          <xs:element name="AsjaNR" type="xs:string"/>
+          <xs:element name="Menetlused">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:restriction base="soapenc:Array">
+                  <xs:sequence>
+                    <xs:element name="item" type="tns:Menetlus" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                  <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:Menetlus[]"/>
+                </xs:restriction>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="faultCode" type="xs:string"/>
+          <xs:element name="faultString" type="xs:string"/>
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Hoiatused">
+    <xs:sequence>
+      <xs:element name="hoiatus" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="grupp" type="xs:string" />
+              <xs:attribute name="kood" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnnaIsikuKvalifikatsioonidParing" type="tns:AnnaIsikuKvalifikatsioonidParing"/>
+  <xs:element name="AnnaIsikuKvalifikatsioonidVastus" type="tns:AnnaIsikuKvalifikatsioonidVastus" nillable="true"/>
+</xs:schema>
