@@ -1,0 +1,33 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Etoimik.Protobuf.Generated.AnnaKlassifikaatorid";
+
+package etoimik.anna_klassifikaatorid;
+
+import "google/protobuf/timestamp.proto";
+
+message KLVaartus {
+    string vaartus = 1;
+    string tunnus = 2;
+    uint64 objekt_id = 3;
+    oneof lyhivaartus_option { string lyhivaartus = 4; }
+    oneof kirjeldus_option { string kirjeldus = 5; }
+    oneof algus_kp_option { google.protobuf.Timestamp algus_kp = 6; }
+    oneof lopp_kp_option { google.protobuf.Timestamp lopp_kp = 7; }
+}
+
+message Klassifikaator {
+    string objekt = 1;
+    string tunnus = 2;
+    uint64 objekt_id = 3;
+    oneof kirjeldus_option { string kirjeldus = 4; }
+    repeated KLVaartus vaartused = 5;
+}
+
+message Request {
+    oneof objekt_id_option { uint64 objekt_id = 1; }
+}
+
+message Response {
+    repeated Klassifikaator vaartused = 1;
+}
