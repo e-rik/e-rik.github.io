@@ -25,7 +25,7 @@ message Klassifikaator {
 }
 
 message Request {
-    oneof objekt_id_option { uint64 objekt_id = 1; }
+    repeated uint64 objekt_id = 1;
 }
 
 message Response {
